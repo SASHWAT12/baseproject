@@ -1,0 +1,6 @@
+#build-step
+build-job:
+  image: node:latest
+  script:
+    - npm run dev
+    - echo "running website I guess"
