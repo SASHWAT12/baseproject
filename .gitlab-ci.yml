@@ -1,7 +1,24 @@
 #build-step
+stages:
+  - build
+  - deploy
+
 build-job:
+  stage: build
   image: node:latest
   script:
     - npm i
-    - npm run dev
-    - echo "running website I guess"
+    - npm run build
+  artifacts:
+    expire_in: 30 days
+    paths:
+      - dist
+    
+
+pages:
+  stage: deploy
+  script:
+    - mv dist public
+  artifacts:
+    paths:
+      - public
