@@ -18,7 +18,8 @@ build-job:
 pages:
   stage: deploy
   script:
-    - mv dist public
+    - mkdir public
+    - cp -r dist/* public/
   artifacts:
     paths:
       - public
