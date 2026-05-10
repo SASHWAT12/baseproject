@@ -10,13 +10,14 @@ build-job:
     - npm i
     - npm run build
   artifacts:
-    expire_in: 30 days
     paths:
       - dist
     
 
 pages:
   stage: deploy
+  dependencies:
+    - build-job
   script:
     - mkdir -p public
     - cp -r dist/* public
